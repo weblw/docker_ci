@@ -34,7 +34,7 @@ handler.on('*', function (event) {
     //   run_cmd('sh', ['./deploy-dev.sh'], function(text){ console.log(text) });
 })
 
-handler.on('push', function (event) {
+handler.on('*', function (event) {
     console.log('Received a push event for %s to %s',
         event.payload.repository.name,
         event.payload.ref);
