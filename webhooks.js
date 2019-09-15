@@ -1,6 +1,6 @@
 var http = require('http')
 var createHandler = require('github-webhook-handler')
-var handler = createHandler({ path: '/webhooks', secret: 'myHashSecret' })
+var handler = createHandler({ path: '/docker-deploy', secret: '111111' })
 // 上面的 secret 保持和 GitHub 后台设置的一致
 
 function run_cmd(cmd, args, callback) {
@@ -33,7 +33,7 @@ handler.on('*', function (event) {
     console.log('Received *', event.payload.action);
     //   run_cmd('sh', ['./deploy-dev.sh'], function(text){ console.log(text) });
 })
- 
+
 handler.on('push', function (event) {
     console.log('Received a push event for %s to %s',
         event.payload.repository.name,
