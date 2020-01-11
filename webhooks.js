@@ -34,7 +34,7 @@ handler.on('*', function (event) {
     //   run_cmd('sh', ['./deploy-dev.sh'], function(text){ console.log(text) });
 })
 
-handler.on('*', function (event) {
+handler.on('push', function (event) {
     console.log('Received a push event for %s to %s',
         event.payload.repository.name,
         event.payload.ref);
@@ -42,7 +42,6 @@ handler.on('*', function (event) {
         if(event.payload.ref === 'refs/heads/master'){
             console.log('deploy master..')
             run_cmd('sh', ['./deploy-dev.sh'], function(text){ console.log('test'+text) });
-
         }
 })
 
